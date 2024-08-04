@@ -1,0 +1,11 @@
+<div class="currency-input">
+  <label for="amount">{{ label }}</label>
+  <div class="input-container">
+    <input id="amount" type="number" [(ngModel)]="amount" (ngModelChange)="onAmountChange()" min="1" step="0.01"/>
+  </div>
+  <div class="currency-selector">
+    <select id="currency" [(ngModel)]="currency" (ngModelChange)="onCurrencyChange()">
+      <option *ngFor="let curr of currencies" [value]="curr">{{ curr }}</option>
+    </select>
+  </div>
+</div>

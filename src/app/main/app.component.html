@@ -1,0 +1,62 @@
+<main class="main">
+  <header class="header">
+    <div class="container-header">
+      <h1>Курси валют на {{ todayDate }}</h1>
+      <div class="rates">
+        <ng-container *ngFor="let currency of currencies">
+          <div class="rate" *ngIf="currency !== 'UAH'">
+            <span>{{ currency }} to UAH: {{ rates[currency] | number:'1.5-5' }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="currency-converter">
+      <h1>Конвертер валют</h1>
+      <div class="converter-input">
+        <label>Кількість:</label>
+        <app-custom-input [(ngModel)]="amount1" name="amount1" (amountChange)="onAmount1Change($event)" min="1" step="1"></app-custom-input>
+        <app-custom-select
+          [(ngModel)]="currency1"
+          [options]="currencyOptions"
+          (ngModelChange)="onCurrency1Change($event)">
+        </app-custom-select>
+      </div>
+
+      <div class="converter-input">
+        <label>Кількість:</label>
+        <app-custom-input [(ngModel)]="amount2" name="amount2" (amountChange)="onAmount2Change($event)" min="1" step="1"></app-custom-input>
+        <app-custom-select
+          [(ngModel)]="currency2"
+          [options]="currencyOptions"
+          (ngModelChange)="onCurrency2Change($event)">
+        </app-custom-select>
+      </div>
+    </div>
+  </div>
+  <!--  <div class="container">-->
+  <!--    <div class="currency-converter">-->
+  <!--      <h1>Конвертер валют</h1>-->
+  <!--      <app-currency-input-->
+  <!--        [amount]="amount1"-->
+  <!--        [currency]="currency1"-->
+  <!--        [currencies]="currencies"-->
+  <!--        label="Кількість:"-->
+  <!--        (amountChange)="onAmount1Change($event)"-->
+  <!--        (currencyChange)="onCurrency1Change($event)">-->
+  <!--      </app-currency-input>-->
+
+  <!--      <app-currency-input-->
+  <!--        [amount]="amount2"-->
+  <!--        [currency]="currency2"-->
+  <!--        [currencies]="currencies"-->
+  <!--        label="Кількість:"-->
+  <!--        (amountChange)="onAmount2Change($event)"-->
+  <!--        (currencyChange)="onCurrency2Change($event)">-->
+  <!--      </app-currency-input>-->
+  <!--    </div>-->
+  <!--  </div>-->
+</main>
+
+<router-outlet></router-outlet>

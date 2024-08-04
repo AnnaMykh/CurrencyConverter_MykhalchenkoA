@@ -1,0 +1,9 @@
+<input
+  type="number"
+  [attr.min]="min"
+  [attr.step]="step"
+  [(ngModel)]="value"
+  (ngModelChange)="onInputChange($event)"
+  (blur)="onBlur()"
+/>
+
